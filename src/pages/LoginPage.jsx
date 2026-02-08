@@ -119,7 +119,7 @@ function LoginPage() {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ minHeight: "80vh", py: 4 }}>
+    <Container maxWidth="lg" sx={{ minHeight: "80vh", py: 8 }}>
       <Grid container spacing={0} sx={{ minHeight: "80vh" }}>
         {/* Left Column - Login Form */}
         <Grid 
@@ -130,11 +130,11 @@ function LoginPage() {
             display: "flex", 
             alignItems: "center", 
             justifyContent: "center",
-            px: { xs: 2, sm: 4, md: 6 }
+            px: { xs: 2, sm: 4, md: 10 }
           }}
         >
-          <Box sx={{ width: "100%", maxWidth: 440 }}>
-            <Box sx={{ mb: 6 }}>
+          <Box sx={{ width: "100%", maxWidth: 400 }}>
+            <Box sx={{ mb: 6, textAlign: "center" }}>
               <Typography 
                 variant="h3" 
                 fontWeight="bold" 
@@ -144,9 +144,9 @@ function LoginPage() {
                 Welcome back!
               </Typography>
               <Typography 
-                variant="body1" 
+                variant="body1"
                 color="text.secondary"
-                sx={{ fontSize: { xs: "0.875rem", sm: "1rem" } }}
+                sx={{ fontSize: { xs: "0.75rem", sm: "0.875rem" } }}
               >
                 Simplify your workflow and boost your productivity with Tuga's App. 
                 Get started for free.
@@ -154,12 +154,13 @@ function LoginPage() {
             </Box>
 
             <form onSubmit={handleEmailLogin}>
-              <Box sx={{ mb: 2.5 }}>
+              <Box sx={{ mb: 2 }}>
                 <TextField
                   fullWidth
                   placeholder="Username"
                   value={email}
                   onChange={handleEmailChange}
+                  size="small"
                   sx={{ 
                     '& .MuiOutlinedInput-root': {
                       borderRadius: 50,
@@ -172,41 +173,44 @@ function LoginPage() {
                       },
                       '& fieldset': {
                         borderColor: "#000000",
-                        borderWidth: 2,
+                        borderWidth: 1.5,
                       },
                       '&:hover fieldset': {
                         borderColor: "#000000",
-                        borderWidth: 2,
+                        borderWidth: 1.5,
                       },
                       '&.Mui-focused fieldset': {
                         borderColor: "#0f0f0fdc",
-                        borderWidth: 3,
+                        borderWidth: 2,
                       },
                     },
                     '& .MuiOutlinedInput-input': {
-                      py: 1.75,
-                      px: 3,
+                      py: 1.5,
+                      px: 2.5,
+                      fontSize: "0.875rem",
                     }
                   }}
                 />
               </Box>
 
-              <Box sx={{ mb: 1.5 }}>
+              <Box sx={{ mb: 1 }}>
                 <TextField
                   fullWidth
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   value={password}
                   onChange={handlePasswordChange}
+                  size="small"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton 
                           onClick={handleClickShowPassword} 
                           edge="end"
-                          sx={{ mr: 1 }}
+                          size="small"
+                          sx={{ mr: 0.5 }}
                         >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -223,32 +227,33 @@ function LoginPage() {
                       },
                       '& fieldset': {
                         borderColor: "#000000",
-                        borderWidth: 2,
+                        borderWidth: 1.5,
                       },
                       '&:hover fieldset': {
                         borderColor: "#000000",
-                        borderWidth: 2,
+                        borderWidth: 1.5,
                       },
                       '&.Mui-focused fieldset': {
                         borderColor: "#0f0f0fdc",
-                        borderWidth: 3,
+                        borderWidth: 2,
                       },
                     },
                     '& .MuiOutlinedInput-input': {
-                      py: 1.75,
-                      px: 3,
+                      py: 1.5,
+                      px: 2.5,
+                      fontSize: "0.875rem",
                     }
                   }}
                 />
               </Box>
 
-              <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 3 }}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>  {/* Reduced from mb: 3 */}
                 <Button 
                   color="inherit" 
                   size="small"
                   sx={{ 
                     textTransform: "none",
-                    fontSize: "0.875rem",
+                    fontSize: "0.75rem",
                     color: "text.secondary",
                     '&:hover': {
                       backgroundColor: "transparent",
@@ -261,7 +266,7 @@ function LoginPage() {
               </Box>
 
               {error && (
-                <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>
+                <Alert severity="error" sx={{ mb: 2, borderRadius: 2, py: 0.5 }}>
                   {error}
                 </Alert>
               )}
@@ -270,32 +275,32 @@ function LoginPage() {
                 type="submit"
                 variant="contained"
                 fullWidth
-                size="large"
+                size="medium"
                 disabled={loading}
                 sx={{
-                  py: 1.75,
+                  py: 1.25,
                   borderRadius: 50,
                   textTransform: "none",
-                  fontSize: "1rem",
+                  fontSize: "0.875rem",
                   fontWeight: 600,
-                  mb: 3,
+                  mb: 2,
                   backgroundColor: "#000000",
                   '&:hover': {
                     backgroundColor: "#333333",
                   }
                 }}
               >
-                {loading ? <CircularProgress size={24} sx={{ color: "#fff" }} /> : "Login"}
+                {loading ? <CircularProgress size={20} sx={{ color: "#fff" }} /> : "Login"}
               </Button>
 
-              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                 <Divider sx={{ flexGrow: 1 }} />
                 <Typography 
-                  variant="body2" 
+                  variant="caption"
                   sx={{ 
-                    mx: 2, 
+                    mx: 1.5,
                     color: "text.secondary",
-                    fontSize: "0.875rem"
+                    fontSize: "0.75rem"
                   }}
                 >
                   or continue with
@@ -308,8 +313,8 @@ function LoginPage() {
                   onClick={handleGoogleLogin}
                   disabled={googleLoading}
                   sx={{
-                    width: 64,
-                    height: 64,
+                    width: 50,
+                    height: 50,
                     border: "1px solid #e0e0e0",
                     borderRadius: "50%",
                     backgroundColor: "#ffffff",
@@ -325,8 +330,8 @@ function LoginPage() {
                 <IconButton
                   onClick={() => alert("Apple login coming soon")}
                   sx={{
-                    width: 64,
-                    height: 64,
+                    width: 50,
+                    height: 50,
                     border: "1px solid #e0e0e0",
                     borderRadius: "50%",
                     backgroundColor: "#ffffff",
@@ -342,8 +347,8 @@ function LoginPage() {
                 <IconButton
                   onClick={() => alert("Facebook login coming soon")}
                   sx={{
-                    width: 64,
-                    height: 64,
+                    width: 50,
+                    height: 50,
                     border: "1px solid #e0e0e0",
                     borderRadius: "50%",
                     backgroundColor: "#ffffff",
@@ -389,6 +394,7 @@ function LoginPage() {
             display: { xs: "none", md: "flex" },
             alignItems: "center",
             justifyContent: "center",
+            backgroundColor: "#f8f8f8",
             px: 2,
           }}
         >
