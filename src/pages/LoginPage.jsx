@@ -20,6 +20,7 @@ import {
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
 import { useNavigate } from "react-router-dom";
+import loginImage from "../assets/logingPage.png";
 
 // Social media icon components (using simple SVGs for Google, Apple, Facebook)
 const GoogleIcon = () => (
@@ -118,8 +119,8 @@ function LoginPage() {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ minHeight: "100vh", py: 4 }}>
-      <Grid container spacing={0} sx={{ minHeight: "100vh" }}>
+    <Container maxWidth="lg" sx={{ minHeight: "80vh", py: 4 }}>
+      <Grid container spacing={0} sx={{ minHeight: "80vh" }}>
         {/* Left Column - Login Form */}
         <Grid 
           item 
@@ -379,8 +380,56 @@ function LoginPage() {
           </Box>
         </Grid>
 
-        {/* Right Column - Illustration */}
-        
+        {/* Right Column*/}
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: { xs: "none", md: "flex" },
+            alignItems: "center",
+            justifyContent: "center",
+            px: 2,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "80%",
+              height: "80%",
+              textAlign: "center",
+            }}
+          >
+            <img
+              src={loginImage}
+              alt="Login Illustration"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "70vh",
+                objectFit: "contain",
+              }}
+            />
+
+            <Typography
+              variant="h6"
+              sx={{
+                mt: 3,
+                fontWeight: 500,
+                color: "#222",
+                maxWidth: 400,
+                lineHeight: 1.3,
+              }}
+            >
+              Make your work easier and organized{" "}<br/> with{" "}
+              <Box component="span" sx={{ fontWeight: 700 }}>
+                Tuga’s App
+              </Box>
+            </Typography>
+          </Box>
+        </Grid>
       </Grid>
     </Container>
   );
