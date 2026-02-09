@@ -3,7 +3,6 @@ import {
   Container,
   Box,
   Grid,
-  Paper,
   Typography,
   TextField,
   Button,
@@ -61,9 +60,22 @@ function LoginPage() {
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
+    
+    if (!email) {
+      setError("Please enter your email");
+      setLoading(false);
+      return;
+    }
     
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setError("Invalid email format");
+      setError("Please enter a valid email address");
+      setLoading(false);
+      return;
+    }
+    
+    if (!password) {
+      setError("Please enter your password");
       setLoading(false);
       return;
     }
@@ -86,7 +98,7 @@ function LoginPage() {
       });
       
     } catch (err) {
-      setError("Login failed. Please try again.");
+      setError("Invalid email or password. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -431,7 +443,7 @@ function LoginPage() {
             >
               Make your work easier and organized{" "}<br/> with{" "}
               <Box component="span" sx={{ fontWeight: 700 }}>
-                Tuga’s App
+                Tuga's App
               </Box>
             </Typography>
           </Box>
