@@ -20,6 +20,8 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/logingPage.png";
+import maleAvatar from "../assets/maleAvatar.png";
+import femaleAvatar from "../assets/femaleAvatar.png";
 
 // Social media icon components (using simple SVGs for Google, Apple, Facebook)
 const GoogleIcon = () => (
@@ -68,7 +70,7 @@ function LoginPage() {
       return;
     }
     
-    if (!/\S+@\S+\.\S+/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
       setError("Please enter a valid email address");
       setLoading(false);
       return;
@@ -408,8 +410,59 @@ function LoginPage() {
             justifyContent: "center",
             backgroundColor: "#f8f8f8",
             px: 2,
+            position: "relative",
           }}
         >
+          {/* Floating Male Avatar */}
+          <Box
+            component="img"
+            src={maleAvatar}
+            alt="Male Avatar"
+            sx={{
+              position: "absolute",
+              top: "15%",
+              left: "13%",
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              animation: "float 6s ease-in-out infinite",
+              "@keyframes float": {
+                "0%, 100%": {
+                  transform: "translateY(0px)",
+                },
+                "50%": {
+                  transform: "translateY(-20px)",
+                },
+              },
+            }}
+          />
+
+          {/* Floating Female Avatar */}
+          <Box
+            component="img"
+            src={femaleAvatar}
+            alt="Female Avatar"
+            sx={{
+              position: "absolute",
+              bottom: "35%",
+              right: "10%",
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              animation: "float 6s ease-in-out infinite 1.5s",
+              "@keyframes float": {
+                "0%, 100%": {
+                  transform: "translateY(0px)",
+                },
+                "50%": {
+                  transform: "translateY(-20px)",
+                },
+              },
+            }}
+          />
+
           <Box
             sx={{
               display: "flex",
@@ -425,7 +478,7 @@ function LoginPage() {
               src={loginImage}
               alt="Login Illustration"
               style={{
-                maxWidth: "100%",
+                maxWidth: "90%",
                 maxHeight: "70vh",
                 objectFit: "contain",
               }}
